@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ChangeColorOnStart : MonoBehaviour
 {
-    delegate void ChangeColor(Color color);
+    public delegate void ChangeColor(Color color);
 
-    private ChangeColor _changeColor;
-    void Start()
+    public ChangeColor _changeColor;
+    
+    void Awake()
     {
         _changeColor += Swap;
         
@@ -29,6 +30,6 @@ public class ChangeColorOnStart : MonoBehaviour
 
     private void PassANewColor(Color color)
     {
-        Debug.Log("The new color is " + color);
+        Debug.Log("The new color not applied to the sphere is " + color);
     }
 }
