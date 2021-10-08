@@ -22,7 +22,8 @@ public class SaveGameManager
         if (LOCK) return;
 
         _saveInfo._highScore = 1000;
-
+        _saveInfo._selectedToggle = ToggleGroupTester.CurrentSelection;
+        
         string jsonSaveFile = JsonUtility.ToJson(_saveInfo, true);
         File.WriteAllText(_filePath, jsonSaveFile);
 
@@ -52,6 +53,9 @@ public class SaveGameManager
             //A Game Manager, a UI Manager, character cosmetics, etc
             //This is what "Loading" is, assigning variables from a save file to the fields
             //of the current game state
+
+            _saveInfo._highScore = 1000;
+            ToggleGroupTester.LoadTogglesFromSaveFile(_saveInfo);
             LOCK = false; //makes it so you can save again
         }
     }
