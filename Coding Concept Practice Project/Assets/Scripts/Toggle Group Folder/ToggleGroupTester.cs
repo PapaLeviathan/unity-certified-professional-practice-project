@@ -13,7 +13,6 @@ public class ToggleGroupTester : MonoBehaviour
    private void Start()
    {
       _toggleGroupInstance = GetComponent<ToggleGroup>();
-      SaveGameManager.Load();
       Debug.Log("First Selected is " + CurrentSelection.name);
    }
 
