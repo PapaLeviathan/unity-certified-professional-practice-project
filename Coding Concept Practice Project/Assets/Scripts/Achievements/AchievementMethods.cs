@@ -8,4 +8,9 @@ public class AchievementMethods : MonoBehaviour
     {
         AchievementManager.AchievementStep(Achievement.StepType.ButtonPressed);
     }
+
+    public void MultiPressedAchievementButtun()
+    {
+        AchievementManager.AchievementStep(Achievement.StepType.Button2Pressed, 1);
+    }
 }

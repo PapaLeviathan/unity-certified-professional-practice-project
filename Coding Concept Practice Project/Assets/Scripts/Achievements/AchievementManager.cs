@@ -15,6 +15,7 @@ public class AchievementManager : MonoBehaviour
     private void Awake()
     {
         Achievement_Manager = this;
+        
         _stepRecordDictionary = new Dictionary<Achievement.StepType, StepRecord>();
 
         foreach (StepRecord stepRecord in _stepRecords)
