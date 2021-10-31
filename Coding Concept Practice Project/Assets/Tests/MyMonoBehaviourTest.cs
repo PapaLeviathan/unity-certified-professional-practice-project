@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -12,11 +13,8 @@ public class MyMonoBehaviourTest : MonoBehaviour, IMonoBehaviourTest
         get { return _frameCount > 10; }
     }
 
-
-    [UnityTest]
-    public IEnumerator MonoBehaviourTest_works()
-
+    private void Update()
     {
-        yield return new MonoBehaviourTest<MyMonoBehaviourTest>();
+        _frameCount++;
     }
 }

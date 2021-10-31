@@ -22,4 +22,11 @@ public class NewTestScript
         // Use yield to skip a frame.
         yield return null;
     }
+    
+    [UnityTest]
+    public IEnumerator MonoBehaviourTest_works()
+
+    {
+        yield return new MonoBehaviourTest<MyMonoBehaviourTest>();
+    }
 }
