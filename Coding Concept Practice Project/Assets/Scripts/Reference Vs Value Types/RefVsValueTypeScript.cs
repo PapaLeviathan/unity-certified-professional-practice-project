@@ -13,9 +13,9 @@ public class RefVsValueTypeScript : MonoBehaviour
         MyClass _secondClass = _firstClass;
         
         //change the value of the second variable. This will change the data set of the first variable since it is a reference to the first variable.
-        _secondClass.value = 5;
+        _secondClass.Variable = 5;
         
-        Debug.Log("First Class: " + _firstClass.value + ", which is to new (modified) value set for it by changing _secondClass.value.");
+        Debug.Log("First Class: " + _firstClass.Variable + ", which is to new (modified) value set for it by changing _secondClass.value.");
         
         //value type: Struct. This is its own set of information.
         MyStruct _firstStruct = new MyStruct(6);
@@ -24,27 +24,27 @@ public class RefVsValueTypeScript : MonoBehaviour
         MyStruct _secondStruct = _firstStruct;
 
         //This changes the value of _secondStruct and ONLY _secondStruct because _secondStruct is its own set of information, created with "MyStruct _secondStruct"
-        _secondStruct.value = 18;
+        _secondStruct.Variable = 18;
         
-        Debug.Log("First Struct: " + _firstStruct.value + ", which is the original (unchanged) value set for it even though _secondClass.value has been modified.");
+        Debug.Log("First Struct: " + _firstStruct.Variable + ", which is the original (unchanged) value set for it even though _secondClass.value has been modified.");
     }
 
 }
 
 public class MyClass
 {
-    public int value;
-    public MyClass(int value)
+    public int Variable;
+    public MyClass(int variable)
     {
-        this.value = value;
+        this.Variable = variable;
     }
 }
 
 public struct MyStruct
 {
-    public int value;
-    public MyStruct(int value)
+    public int Variable;
+    public MyStruct(int variable)
     {
-        this.value = value;
+        this.Variable = variable;
     }
 }
