@@ -17,7 +17,8 @@ public class CalculateAim : MonoBehaviour
         Debug.DrawRay(transform.position, direction, Color.green);
         //calculate the angle using the inverse tangent method
         float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        Debug.Log("Angle: " + angle); 
+        //Debug.Log("Angle: " + angle); 
+        Debug.Log("Inverse tangent calc converted to degrees is " + angle);
         
         //define the rotation along a specific axis using the angle
         //Quaternion angleAxis = Quaternion.AngleAxis(angle, Vector3.up);

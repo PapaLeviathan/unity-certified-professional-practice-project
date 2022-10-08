@@ -8,8 +8,8 @@ public class IAPManager : MonoBehaviour, IStoreListener
 {
     public static IAPManager instance;
 
-    private static IStoreController m_StoreController;
-    private static IExtensionProvider m_StoreExtensionProvider;
+    private static IStoreController _StoreController;
+    private static IExtensionProvider _StoreExtensionProvider;
 
     //Step 1 create your products
 
@@ -34,7 +34,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
     private bool IsInitialized()
     {
-        return m_StoreController != null && m_StoreExtensionProvider != null;
+        return _StoreController != null && _StoreExtensionProvider != null;
     }
 
 
@@ -95,7 +95,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
     void Start()
     {
-        if (m_StoreController == null) { InitializePurchasing(); }
+        if (_StoreController == null) { InitializePurchasing(); }
     }
 
     private void TestSingleton()
@@ -109,11 +109,11 @@ public class IAPManager : MonoBehaviour, IStoreListener
     {
         if (IsInitialized())
         {
-            Product product = m_StoreController.products.WithID(productId);
+            Product product = _StoreController.products.WithID(productId);
             if (product != null && product.availableToPurchase)
             {
                 Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));
-                m_StoreController.InitiatePurchase(product);
+                _StoreController.InitiatePurchase(product);
             }
             else
             {
@@ -139,7 +139,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             Debug.Log("RestorePurchases started ...");
 
-            var apple = m_StoreExtensionProvider.GetExtension<IAppleExtensions>();
+            var apple = _StoreExtensionProvider.GetExtension<IAppleExtensions>();
             apple.RestoreTransactions((result) => {
                 Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
             });
@@ -153,8 +153,8 @@ public class IAPManager : MonoBehaviour, IStoreListener
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
     {
         Debug.Log("OnInitialized: PASS");
-        m_StoreController = controller;
-        m_StoreExtensionProvider = extensions;
+        _StoreController = controller;
+        _StoreExtensionProvider = extensions;
     }
 
 
